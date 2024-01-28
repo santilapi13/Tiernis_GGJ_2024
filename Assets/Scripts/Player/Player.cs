@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private float currentJumpTime = 0f;
     private bool isJumping = false;
     [SerializeField] private bool isGrounded = false;
-    private bool dying = false;
+    [SerializeField] private bool dying = false;
 
     [SerializeField] private float invulnerabilityTime = 3f;
     
@@ -135,15 +135,18 @@ public class Player : MonoBehaviour
     }
 
     public void TakeDamage() {
-        isGrounded = true;
         Physics2D.IgnoreLayerCollision(6, 7);
+        isGrounded = true;
         dying = true;
+        animator.SetBool("Jump", false);
+        animator.SetBool("Move", false);
         animator.SetTrigger("DeathTrigger");
     }
 
     public void Respawn() {
-        dying = false;
+        Debug.Log("ENTRA");
         PlayerTransform.position = respawnPoint;
+        dying = false;
         StartCoroutine(Invulnerablility());
     }
 
