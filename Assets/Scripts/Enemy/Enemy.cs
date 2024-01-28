@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Random = System.Random;
 
 public abstract class Enemy : MonoBehaviour {
     [SerializeField] protected Health health;
     [SerializeField] protected Player player;
     [SerializeField] protected Animator animator;
+    private Random random = new Random();
+    private bool isDead = false;
     
     [SerializeField] protected float speed;
     [SerializeField] protected float jumpForce;
@@ -40,7 +42,13 @@ public abstract class Enemy : MonoBehaviour {
         Die();
     }
 
-    private void Die() {
+    protected virtual void Die() {
+        if (isDead) return;
+        isDead = true;
+        int rndm = random.Next(1, 4);
+        string name = "cat_death_" + rndm;
+        AudioManager.Instance.PlaySFX(name, false);
+        GameManager.Instance.setProgrecion();
         gameObject.SetActive(false);
     }
 

@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor.Animations;
 using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody2D PlayerRb;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private AnimatorController[] animatorControllers;
+    [SerializeField] private RuntimeAnimatorController[] animatorControllers;
     private int currentAnimatorControllerIndex = 0;
-    [SerializeField] private AnimatorController currentAnimatorController;
+    [SerializeField] private RuntimeAnimatorController currentAnimatorController;
     [SerializeField] private Animator animator;
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private bool bulletCooldown = false;
@@ -30,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isInvulnerable = false;
     
     void Start() {
+        AudioManager.Instance.PlayMusic(1);
         currentAnimatorControllerIndex = 0;
         currentAnimatorController = animatorControllers[currentAnimatorControllerIndex];
         animator.runtimeAnimatorController = currentAnimatorController;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         {
             bulletCooldown = true;
             animator.SetTrigger("AttackTrigger");
+            AudioManager.Instance.PlaySFX("player_attack", false);
             return;
         }
         
@@ -151,8 +152,11 @@ public class Player : MonoBehaviour
         animator.SetTrigger("DeathTrigger");
     }
 
-    public void Respawn() {
+    public void Respawn()
+    {
+        AudioManager.Instance.PlaySFX("player_death_1", false);
         lives--;
+        GameManager.Instance.SetLives(lives - 1);
         if (lives <= 0) {
             Die();
             return;
@@ -188,9 +192,15 @@ public class Player : MonoBehaviour
     }
 
     public void Evolve() {
+        if (currentAnimatorControllerIndex == animatorControllers.Length - 1)
+            return;
+        
         currentAnimatorControllerIndex++;
         currentAnimatorController = animatorControllers[currentAnimatorControllerIndex];
         animator.runtimeAnimatorController = currentAnimatorController;
-        // TODO: Enable evolve particle
+        animator.SetBool("Move", false);
+        animator.SetBool("Jump", false);
+        transform.localScale = new Vector3(0.2f, 0.2f, 1);
+        xScale = 0.2f;
     }
 }

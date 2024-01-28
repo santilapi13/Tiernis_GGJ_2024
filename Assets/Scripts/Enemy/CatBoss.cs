@@ -1,17 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CatBoss : Enemy {
-    [SerializeField] private GameObject[] wave;
-    [SerializeField] private Transform waveSpawnPoint;
-    [SerializeField] private Transform lastEnemyPosition;
     [SerializeField] private float attackCooldown;
     [SerializeField] private GameObject projectile;
-    private int attackNumber = 0;    
+    private bool dying = false;
 
     
     protected override void Act(){
+        if (dying) return;
+        
         if(attackCooldown > 0) {
             attackCooldown -= Time.deltaTime;
             return;
@@ -22,19 +23,6 @@ public class CatBoss : Enemy {
         attackCooldown = 5f;
     }
 
-    /*
-    private void SpawnWave(){
-        for(int i = 0; i < wave.Length; i++){
-            if (i == wave.Length - 1) {
-                Instantiate(wave[i], lastEnemyPosition.position, Quaternion.identity);
-                wave[i].GetComponent<RangeCat>().SetDirection(new Vector2(lastEnemyPosition.position.x + 5f, lastEnemyPosition.position.y));
-            } else {
-                Instantiate(wave[i], waveSpawnPoint.position, Quaternion.identity);
-            }
-        }
-    }
-    */
-
     private void Shoot(){
         for(int i = 0; i < 3; i++){
             Invoke("ShootBullet", i * 0.5f);
@@ -42,7 +30,21 @@ public class CatBoss : Enemy {
     }
 
     private void ShootBullet(){
+        AudioManager.Instance.PlaySFX("cat_boss_bullet", false);
         GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
         bullet.GetComponent<EnemyBullet>().setParameters(Vector2.left, false);
+    }
+
+    protected override void Die() {
+        dying = true;
+        animator.SetTrigger("DeathTrigger");
+    }
+
+    public void EndLevel() {
+        SceneManager.LoadScene("Creditos");
+    }
+
+    private void OnEnable() {
+        AudioManager.Instance.PlayIntroAndLoop(2, 3);
     }
 }

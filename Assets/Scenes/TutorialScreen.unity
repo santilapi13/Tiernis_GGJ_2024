@@ -421,8 +421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -268.3095, y: -171}
-  m_SizeDelta: {x: 185.4297, y: 60.8484}
+  m_AnchoredPosition: {x: 256, y: -169}
+  m_SizeDelta: {x: 170, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842703985
 MonoBehaviour:
@@ -477,7 +477,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenuScene
+          m_StringArgument: 2. MainMenuScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &842703986
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f31a68f7f91aac140a61772ed43032b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d457a16b67220ed4aa99ff6017ff1868, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -529,7 +529,6 @@ GameObject:
   - component: {fileID: 1354186592}
   - component: {fileID: 1354186594}
   - component: {fileID: 1354186593}
-  - component: {fileID: 1354186595}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -576,7 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f297c735a37ad17488f85879278750fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccd5d3bf3e274fb4582e9e36663f6169, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -594,23 +593,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354186591}
   m_CullTransparentMesh: 1
---- !u!114 &1354186595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354186591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36fdc7b3586ce594ba35a5f5795b80a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 1354186593}
-  sprites:
-  - {fileID: 21300000, guid: f297c735a37ad17488f85879278750fd, type: 3}
-  - {fileID: 21300000, guid: 874b1ec3a0ceb4d4d89a92461e051af2, type: 3}
-  timeToChange: 1
 --- !u!1 &1996915524
 GameObject:
   m_ObjectHideFlags: 0

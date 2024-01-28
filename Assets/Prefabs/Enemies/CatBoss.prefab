@@ -173,11 +173,8 @@ MonoBehaviour:
   isGrounded: 0
   jumpCooldown: 0
   rb: {fileID: 7488967719895511714}
-  wave: []
-  waveSpawnPoint: {fileID: 8765716482734061952}
-  lastEnemyPosition: {fileID: 1227497225010000186}
   attackCooldown: 5
-  projectile: {fileID: 7024455824424259810, guid: 4492c2662de73af4890771640b6d7bc3, type: 3}
+  projectile: {fileID: 7024455824424259810, guid: f409b4e426f8c094599a7cea9e256c35, type: 3}
 --- !u!50 &7488967719895511714
 Rigidbody2D:
   serializedVersion: 4

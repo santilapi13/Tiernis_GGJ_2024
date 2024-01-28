@@ -16,6 +16,7 @@ public class Wool : MonoBehaviour {
     private void Explosion() {
         explosionParticle.transform.SetParent(null);
         explosionParticle.SetActive(true);
+        AudioManager.Instance.PlaySFX("explosion", false);
         GenerateRadius();
         Destroy(gameObject, 0.1f);
     }
