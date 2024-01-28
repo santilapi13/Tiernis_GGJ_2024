@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6419841428562036131}
   - component: {fileID: 1481817841387141706}
   - component: {fileID: 3321802183324945089}
+  - component: {fileID: 2318056232006574491}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.15465288, g: 0.7660377, b: 0.58517957, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,8 +104,10 @@ MonoBehaviour:
   jumpForce: 0.7
   maxJumpTime: 0.2
   firstImpulse: 5
-  bulledColeDown: 0
-  bulledPrefab: {fileID: 1510070455674027788, guid: 53f15ae11e1eaa349bb2e20d06de1546, type: 3}
+  bulletCooldown: 0
+  animator: {fileID: 2318056232006574491}
+  bulletPrefab: {fileID: 1510070455674027788, guid: 53f15ae11e1eaa349bb2e20d06de1546, type: 3}
+  isGrounded: 0
   invulnerabilityTime: 3
 --- !u!61 &1481817841387141706
 BoxCollider2D:
@@ -178,3 +181,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2318056232006574491
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598881718799340052}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e08ff4d49c3e7ef4eadc9c44b5a871ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

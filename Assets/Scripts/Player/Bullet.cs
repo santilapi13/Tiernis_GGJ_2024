@@ -24,4 +24,10 @@ public class Bullet : MonoBehaviour {
         this.direction = direction;
         this.speed += playerSpeed;
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player") || other.CompareTag("Bullet") || other.CompareTag("Wall")) return;
+
+        Destroy(gameObject);
+    }
 }

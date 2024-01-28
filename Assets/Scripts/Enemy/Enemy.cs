@@ -20,6 +20,7 @@ public abstract class Enemy : MonoBehaviour {
     protected Vector2 playerLastPosition;
 
     private void Awake() {
+        Physics2D.IgnoreLayerCollision(7, 8);
         xScale = transform.localScale.x;
     }
     
@@ -34,7 +35,7 @@ public abstract class Enemy : MonoBehaviour {
     }
 
     private void Die() {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     protected abstract void Act();
