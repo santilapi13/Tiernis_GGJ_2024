@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 547edd1e292365240a4c1ba7b8731cab
+  - enabled: 1
+    path: Assets/Scenes/Level1Screen.unity
+    guid: d09a0b8b2dd71a64e8906d33c1ed5658
+  - enabled: 1
+    path: Assets/Scenes/TutorialScreen.unity
+    guid: 7b777a7642807ce4b8b6c67193650a0b
+  - enabled: 1
+    path: Assets/Scenes/DeadScreen.unity
+    guid: cbb60d23fe56d2c42be379365cbae545
   m_configObjects: {}

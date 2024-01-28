@@ -9,23 +9,22 @@ public class Player : MonoBehaviour
     private Rigidbody2D PlayerRb;
     private Transform PlayerTransform;
     [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float jumpForce = 10.0f;
-    [SerializeField] private float maxJumpTime = 1.5f;
-    [SerializeField] private float firstImpulse = 10.0f;
     [SerializeField] private float bulletCooldown = 0f;
     [SerializeField] private Animator animator;
+    
+    [SerializeField] private float jumpForce = 10.0f;
+    private bool buttonDown = false;
 
     float xScale;
 
     [SerializeField] private GameObject bulletPrefab;
     private Vector2 respawnPoint;
-    
-    private float currentJumpTime = 0f;
-    private bool isJumping = false;
     [SerializeField] private bool isGrounded = false;
     [SerializeField] private bool dying = false;
 
     [SerializeField] private float invulnerabilityTime = 3f;
+    [SerializeField] private int lives = 3;
+    [SerializeField] private bool isInvulnerable = false;
     
     void Start() {
         PlayerRb = GetComponent<Rigidbody2D>();
@@ -45,12 +44,14 @@ public class Player : MonoBehaviour
     void Update() {
         if (dying) return;
         
-        Jump();
 
         if (Input.GetKeyDown(KeyCode.Space) && bulletCooldown <= 0f) {
             animator.SetTrigger("AttackTrigger");
             return;
         }
+        
+        if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
+            Jump(); 
         
         animator.SetBool("Move", Input.GetAxis("Horizontal") != 0);
 
@@ -59,6 +60,9 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate() {
+        
+        
+        
         if (dying) return;
         
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -77,28 +81,12 @@ public class Player : MonoBehaviour
         
     }
 
-    void Jump() {
-        if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
-        {
-            isJumping = true;
-            currentJumpTime = 0f;
-            PlayerRb.AddForce(Vector2.up * firstImpulse, ForceMode2D.Impulse);
-        }
-
-        if (!isJumping) return;
-
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && currentJumpTime < maxJumpTime)
-        {
-            currentJumpTime += Time.deltaTime;
-            float jumpForceMultiplier = Mathf.Clamp01(currentJumpTime / maxJumpTime);
-            PlayerRb.AddForce(Vector2.up * jumpForce * jumpForceMultiplier, ForceMode2D.Impulse);
-        }
-
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-            isJumping = false;
-        
+    void Jump()
+    {
+        PlayerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
-
+    
+    
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -134,7 +122,10 @@ public class Player : MonoBehaviour
         bullet3.GetComponent<Bullet>().SetValues(new Vector2(x, -1), Math.Abs(PlayerRb.velocity.x));
     }
 
-    public void TakeDamage() {
+    public void TakeDamage()
+    {
+        if (isInvulnerable) return;
+        isInvulnerable = true;
         Physics2D.IgnoreLayerCollision(6, 7);
         isGrounded = true;
         dying = true;
@@ -144,16 +135,25 @@ public class Player : MonoBehaviour
     }
 
     public void Respawn() {
-        Debug.Log("ENTRA");
+        lives--;
+        if (lives <= 0) {
+            Die();
+            return;
+        }
         PlayerTransform.position = respawnPoint;
         dying = false;
         StartCoroutine(Invulnerablility());
+    }
+    
+    public void Die() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DeadScreen");
     }
 
     private IEnumerator Invulnerablility() {
         yield return new WaitForSeconds(invulnerabilityTime);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         dying = false;
+        isInvulnerable = false;
     }
 
     public void SetRespawnPoint(Vector2 position) {

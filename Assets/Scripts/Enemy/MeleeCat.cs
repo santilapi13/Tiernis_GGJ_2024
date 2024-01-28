@@ -16,7 +16,7 @@ public class MeleeCat : Enemy {
             return;
         }
         
-        if (HaveEqualHeight(playerPosition) || Math.Abs(transform.position.x - playerLastPosition.x) > 4f || !isGrounded) {
+        if (HaveEqualHeight(playerPosition) || Math.Abs(transform.position.x - playerLastPosition.x) > 4f || !isGrounded || playerPosition.y - transform.position.y > 1f) {
             MoveTowardsPosition(playerPosition);
             return;
         }
@@ -39,12 +39,9 @@ public class MeleeCat : Enemy {
     }
 
     private void GetOffPlatform() {
-        // TODO
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Bullet"))
-            TakeDamage(1);
+        if (!isGrounded) return;
+        
+        var direction = new Vector2(playerLastPosition.x - transform.position.x, 0f);
+        MoveTowardsPosition(direction);
     }
 }

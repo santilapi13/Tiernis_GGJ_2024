@@ -69,4 +69,10 @@ public abstract class Enemy : MonoBehaviour {
         if (other.gameObject.CompareTag("Ground"))
             isGrounded = true;
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+            TakeDamage(1);
+    }
 }
