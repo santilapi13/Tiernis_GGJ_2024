@@ -5,6 +5,10 @@ using UnityEngine;
 public class Wool : MonoBehaviour {
     [SerializeField] GameObject explosionParticle;
 
+    private void Start() {
+        Physics2D.IgnoreLayerCollision(7, 9);
+    }
+    
     void OnCollisionEnter2D(Collision2D other) {
         Explosion();
     }

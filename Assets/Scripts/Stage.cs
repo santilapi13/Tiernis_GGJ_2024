@@ -14,6 +14,8 @@ public class Stage : MonoBehaviour {
     [SerializeField] private Collider2D wall1;
     [SerializeField] private Collider2D wall2;
     [SerializeField] private GameObject respawnPoint;
+    [SerializeField] private Lanadero lanadero;
+    
     private bool enableWave;
     private bool waveFinished;
     private float timer;
@@ -23,6 +25,7 @@ public class Stage : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (!other.CompareTag("Player")) return;
         
+        if (lanadero) lanadero.gameObject.SetActive(true);
         virtualCamera.Priority = 20;
         virtualCamera.Follow = stageCenter.transform;
         trigger.enabled = false;

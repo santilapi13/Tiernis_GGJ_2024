@@ -19,9 +19,15 @@ public abstract class Enemy : MonoBehaviour {
     [SerializeField] protected Rigidbody2D rb;
     protected Vector2 playerLastPosition;
 
-    private void Awake() {
+    private void Awake()
+    {
         Physics2D.IgnoreLayerCollision(7, 8);
         xScale = transform.localScale.x;
+        
+    }
+
+    private void Start() {
+        player = FindObjectOfType<Player>();
     }
     
     private void Update() {
@@ -57,7 +63,7 @@ public abstract class Enemy : MonoBehaviour {
     }
     
     protected bool HaveEqualHeight(Vector2 position) {
-        return Math.Abs(transform.position.y - position.y) < 0.2;
+        return Math.Abs(transform.position.y - position.y) < 1f;
     }
     
     private void OnCollisionExit2D(Collision2D other) {

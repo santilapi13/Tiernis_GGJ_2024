@@ -16,7 +16,7 @@ public class MeleeCat : Enemy {
             return;
         }
         
-        if (HaveEqualHeight(playerPosition) || Math.Abs(transform.position.x - playerLastPosition.x) > 4f || !isGrounded || playerPosition.y - transform.position.y > 1f) {
+        if (HaveEqualHeight(playerPosition) || Math.Abs(transform.position.x - playerLastPosition.x) > 4f || !isGrounded) {
             MoveTowardsPosition(playerPosition);
             return;
         }
@@ -25,6 +25,7 @@ public class MeleeCat : Enemy {
     }
 
     private void ChangeHeight(float playerHeight) {
+        rb.gravityScale = 1f;
         if (transform.position.y > playerHeight)
             GetOffPlatform();
         else

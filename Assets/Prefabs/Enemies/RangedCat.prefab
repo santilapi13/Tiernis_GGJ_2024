@@ -50,7 +50,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3204146076907966828, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
       propertyPath: m_Name
-      value: RangeEnemy Variant
+      value: RangedCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903310817996759593, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc00dd7d41be9cf4fb01fa2ed26dde89, type: 3}
+    - target: {fileID: 4903310817996759593, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903310817996759593, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -203856351
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879551881247467437, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 64cffdb4c2ded404883cfb1d992bea56, type: 2}
+    - target: {fileID: 7949778661630898001, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
+      propertyPath: initialHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7003810372731283912, guid: 65d49a1beebbd7e4e9e1c2788c45693e, type: 3}
@@ -84,15 +104,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 6942894030852283508}
-  player: {fileID: 0}
+  player: {fileID: 6419841428562036131, guid: 9226231f7da681c419c3db3658610d48, type: 3}
   animator: {fileID: 7156394031098369160}
-  speed: 1
+  speed: 3
   jumpForce: 1
   isGrounded: 0
   jumpCooldown: 0
   rb: {fileID: 172990699661123942}
   bullet: {fileID: 7024455824424259810, guid: 4492c2662de73af4890771640b6d7bc3, type: 3}
-  ShotPoint: {x: 1, y: -3.65}
+  shootPoint: {x: 0, y: 0}
   shotCooldown: 4
 --- !u!114 &6942894030852283508 stripped
 MonoBehaviour:

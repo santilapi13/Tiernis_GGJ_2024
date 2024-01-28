@@ -100,15 +100,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336788807ee1f6e4491fb9b2d272c794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  jumpForce: 0.7
-  maxJumpTime: 0.2
-  firstImpulse: 5
-  bulletCooldown: 0
+  animatorControllers:
+  - {fileID: 9100000, guid: e08ff4d49c3e7ef4eadc9c44b5a871ae, type: 2}
+  - {fileID: 9100000, guid: bb8d1fbf475e3e441b6e84dfc1643085, type: 2}
+  currentAnimatorController: {fileID: 0}
   animator: {fileID: 2318056232006574491}
+  speed: 7
+  bulletCooldown: 0
+  jumpForce: 0.7
   bulletPrefab: {fileID: 1510070455674027788, guid: 53f15ae11e1eaa349bb2e20d06de1546, type: 3}
   isGrounded: 0
+  dying: 0
   invulnerabilityTime: 3
+  lives: 3
+  isInvulnerable: 0
 --- !u!61 &1481817841387141706
 BoxCollider2D:
   m_ObjectHideFlags: 0

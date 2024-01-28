@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2944279616744522159}
   m_Layer: 0
   m_Name: FurrBall
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 7024455824424259810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.45, y: -3.45, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 1}
+  m_LocalPosition: {x: 1.6331, y: -3.3009, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a8509129f98d24b4b88e517fb1ff649c, type: 3}
-  m_Color: {r: 1, g: 0.9575472, b: 0.9575472, a: 1}
+  m_Color: {r: 0.88197184, g: 0.9622642, b: 0.84061944, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.2406827}
+  m_Offset: {x: -0.8553362, y: -0.8907926}
   serializedVersion: 2
-  m_Radius: 9.472728
+  m_Radius: 5.4597235
 --- !u!50 &2249881102730780168
 Rigidbody2D:
   serializedVersion: 4
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f48931cf57b0ca44297d00f6159b4946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5000
+  speed: 2000
   lifeTime: 5
   isCurved: 0
   curveSpeed: 10

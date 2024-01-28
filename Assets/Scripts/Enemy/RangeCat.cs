@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class RangeCat : Enemy
 {
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Vector2 ShotPoint;
+    [SerializeField] private Transform shootPoint;
     [SerializeField] private float shotCooldown = 0;
     private float currentCooldown = 0;
 
@@ -14,9 +15,8 @@ public class RangeCat : Enemy
     {
         var playerPosition = player.GetPosition();
 
-        if (Vector2.Distance(transform.position, ShotPoint) > 0.1f)
-        {
-            MoveTowardsPosition(ShotPoint);
+        if (Math.Abs(transform.position.x - shootPoint.position.x) > 1f) {
+            MoveTowardsPosition(shootPoint.position);
             return;
         }
 
@@ -29,9 +29,11 @@ public class RangeCat : Enemy
         var isCurved = (playerPosition.y > transform.position.y + 0.5f) ? true : false;
 
         Vector2 direction = player.GetPosition().x < transform.position.x ? new Vector2(-1, 0) : new Vector2(1, 0);
+        Vector2 possition = new Vector2(transform.position.x + direction.x * 0.2f, transform.position.y + 0.2f);
         var bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
         bulletInstance.GetComponent<EnemyBullet>().setParameters(direction, isCurved);
 
         currentCooldown = shotCooldown;
     }
+    
 }
