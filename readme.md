@@ -1,10 +1,11 @@
-# Web pages (They contain the downloadable .zips)
+# Tiernis - Global Game Jam 🌐🎮
 ![WhatsApp Image 2024-01-28 at 21 04 07](https://github.com/santilapi13/global_game_jam_2024/assets/89311154/86d52874-899e-4760-92b3-c7de73a094ce)
 
+## Download
 - GGJ: https://globalgamejam.org/games/2024/tiernis-4
 - itch.io: https://elcrustaceo.itch.io/tiernis
 
-# Preview
+## Preview
 Videogame developed in 48 hours for the Global Game Jam.
 
 Topic: "Make me laugh" (Just play it 😏)
@@ -13,7 +14,7 @@ Topic: "Make me laugh" (Just play it 😏)
 ![WieeZh](https://github.com/santilapi13/global_game_jam_2024/assets/89311154/78673833-76fb-4cfe-8531-60acb38eba49)
 
 
-# Members
+## Members
 ![WhatsApp Image 2024-01-28 at 20 58 06](https://github.com/santilapi13/global_game_jam_2024/assets/89311154/9d6c6e29-12df-4691-9fde-5713c195ec2b)
 - Santiago N. Lapiana, programmer
 - Nahuel Bianca, programmer
