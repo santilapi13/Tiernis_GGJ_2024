@@ -58,9 +58,6 @@ public class Player : MonoBehaviour
             return;
         }
         
-        if (Input.GetKeyDown(KeyCode.Return))
-            Evolve();
-        
         if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
             Jump(); 
         
